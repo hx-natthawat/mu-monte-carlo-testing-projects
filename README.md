@@ -1,15 +1,16 @@
-# Gold Price Monte Carlo Simulation
+# Gold Price Monte Carlo Simulation Analysis
 
-This project implements a Monte Carlo simulation to forecast gold prices using historical data. The analysis provides insights into potential future price movements through statistical modeling and simulation techniques.
+This project implements a Monte Carlo simulation to forecast gold prices using historical data. The analysis uses 1000 simulations over a 252-day trading period (1 year) to generate potential future price paths and provide statistical insights into possible price movements.
 
-## Project Description
+## Technical Overview
 
-The Monte Carlo simulation is implemented step-by-step to:
+The simulation implements the following key components:
 
-1. Analyze historical gold price data
-2. Model price movements and volatility
-3. Generate multiple simulated price paths
-4. Visualize potential future price ranges
+- Daily returns calculation using percentage changes
+- Normal distribution sampling based on historical return statistics
+- 1000 independent price path simulations
+- 252-day (1 trading year) forecast period
+- Statistical analysis of final price distributions
 
 ## Prerequisites
 
@@ -27,46 +28,79 @@ Install dependencies using:
 pip install -r requirements.txt
 ```
 
-## Data
+## Data Source
 
-The project uses historical gold price data from `FINAL_USO.csv`, sourced from:
+The analysis uses historical gold price data from `FINAL_USO.csv`, available at:
 https://huggingface.co/datasets/mltrev23/gold-price/blob/main/FINAL_USO.csv
 
-## Project Structure
+## Implementation Details
 
-- `gold-pricing-montecarlo.ipynb`: Jupyter notebook containing the step-by-step Monte Carlo simulation implementation
-- `FINAL_USO.csv`: Historical gold price dataset
-- `requirements.txt`: Python package dependencies
-- `.gitignore`: Git ignore rules for Python projects
-- `README.md`: Project documentation
-
-## Implementation Steps
-
-The analysis is implemented in `gold-pricing-montecarlo.ipynb` with the following steps:
+The analysis is implemented in `gold-pricing-montecarlo.ipynb` with the following detailed steps:
 
 1. **Data Preparation**
 
    - Import required libraries (pandas, numpy, matplotlib)
-   - Load and preprocess historical gold price data
+   - Load historical price data from FINAL_USO.csv
+   - Convert dates to datetime format
+   - Sort data chronologically
 
-2. **Monte Carlo Simulation**
-   - Calculate historical price movements
-   - Generate multiple price path simulations
-   - Analyze and visualize results
+2. **Return Calculation**
 
-## Usage
+   - Calculate daily returns using adjusted closing prices
+   - Compute return statistics (mean, standard deviation)
+   - Remove any NA values from the return series
 
-1. Clone the repository
-2. Install dependencies:
+3. **Simulation Parameters**
+
+   - Number of simulations: 1000
+   - Forecast period: 252 trading days
+   - Starting price: Latest adjusted closing price
+   - Return distribution: Normal distribution based on historical statistics
+
+4. **Monte Carlo Simulation**
+
+   - Initialize price paths matrix
+   - Generate random daily returns
+   - Calculate cumulative price paths
+   - Store results in numpy array
+
+5. **Visualization and Analysis**
+   - Plot all simulated price paths
+   - Calculate key statistics:
+     - Expected (mean) price
+     - Median price
+     - Price standard deviation
+     - 5th and 95th percentiles for confidence intervals
+
+## Usage Instructions
+
+1. Ensure all prerequisites are installed:
+
    ```bash
    pip install -r requirements.txt
    ```
-3. Open and run `gold-pricing-montecarlo.ipynb` in Jupyter Notebook
-4. Follow the step-by-step implementation in the notebook
 
-## Git Setup
+2. Place the FINAL_USO.csv file in the project directory
 
-Initialize git repository and start tracking changes:
+3. Open `gold-pricing-montecarlo.ipynb` in Jupyter Notebook
+
+4. Execute cells sequentially to:
+   - Load and prepare data
+   - Run simulations
+   - Generate visualizations
+   - View statistical analysis
+
+## Project Structure
+
+- `gold-pricing-montecarlo.ipynb`: Main analysis notebook
+- `FINAL_USO.csv`: Historical price dataset
+- `requirements.txt`: Python dependencies
+- `.gitignore`: Git ignore rules
+- `README.md`: Project documentation
+
+## Git Configuration
+
+The repository includes a `.gitignore` file configured for Python projects. To initialize:
 
 ```bash
 git init
@@ -74,13 +108,16 @@ git add .
 git commit -m "Initial commit"
 ```
 
-The included `.gitignore` is configured for Python projects, excluding:
+## Output Analysis
 
-- Python cache and compiled files
-- Virtual environments
-- Jupyter checkpoints
-- IDE and OS-specific files
+The simulation provides:
+
+- Visual representation of potential price paths
+- Statistical measures of price distribution:
+  - Expected future price
+  - Price range with 90% confidence interval
+  - Volatility measures through standard deviation
 
 ## License
 
-This project is available for educational and research purposes.
+This project is available for educational and research purposes. The implementation is designed for academic understanding of Monte Carlo methods in financial forecasting.
