@@ -1,89 +1,85 @@
-# Gold Price Forecasting using Monte Carlo Simulation
+# Gold Price Monte Carlo Simulation
 
-This project implements a Monte Carlo simulation approach to forecast gold prices using historical data. The analysis is performed using Python and Jupyter Notebook, providing insights into potential future price movements of gold.
+This project implements a Monte Carlo simulation to forecast gold prices using historical data. The analysis provides insights into potential future price movements through statistical modeling and simulation techniques.
 
-## Overview
+## Project Description
 
-The project uses Monte Carlo methods to simulate possible future price paths for gold based on historical price data. This statistical approach helps in understanding potential price ranges and risk assessment in gold price movements.
+The Monte Carlo simulation is implemented step-by-step to:
+
+1. Analyze historical gold price data
+2. Model price movements and volatility
+3. Generate multiple simulated price paths
+4. Visualize potential future price ranges
 
 ## Prerequisites
 
-- Python 3.x
-- Git
-- Required Python packages:
-  - pandas
-  - numpy
-  - matplotlib
+Required Python packages:
 
-You can install the required packages using pip:
-
-```bash
-pip install pandas numpy matplotlib
+```
+pandas
+numpy
+matplotlib
 ```
 
-## Getting Started
-
-1. Clone the repository:
-
-```bash
-git clone [repository-url]
-cd [repository-name]
-```
-
-2. Create and activate a virtual environment (recommended):
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-```
-
-3. Install dependencies:
+Install dependencies using:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Data Source
+## Data
 
-The analysis uses historical gold price data from:
+The project uses historical gold price data from `FINAL_USO.csv`, sourced from:
 https://huggingface.co/datasets/mltrev23/gold-price/blob/main/FINAL_USO.csv
 
 ## Project Structure
 
-- `gold-pricing-montecarlo.ipynb`: Main Jupyter notebook containing the analysis and simulation code
+- `gold-pricing-montecarlo.ipynb`: Jupyter notebook containing the step-by-step Monte Carlo simulation implementation
 - `FINAL_USO.csv`: Historical gold price dataset
+- `requirements.txt`: Python package dependencies
+- `.gitignore`: Git ignore rules for Python projects
 - `README.md`: Project documentation
-- `.gitignore`: Specifies which files Git should ignore
+
+## Implementation Steps
+
+The analysis is implemented in `gold-pricing-montecarlo.ipynb` with the following steps:
+
+1. **Data Preparation**
+
+   - Import required libraries (pandas, numpy, matplotlib)
+   - Load and preprocess historical gold price data
+
+2. **Monte Carlo Simulation**
+   - Calculate historical price movements
+   - Generate multiple price path simulations
+   - Analyze and visualize results
 
 ## Usage
 
-1. Ensure all prerequisites are installed
-2. Open `gold-pricing-montecarlo.ipynb` in Jupyter Notebook or JupyterLab
-3. Run the cells sequentially to perform the analysis
-
-## Analysis Steps
-
-1. Data loading and preprocessing
-2. Statistical analysis of historical price movements
-3. Monte Carlo simulation implementation
-4. Visualization of results and price forecasts
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Open and run `gold-pricing-montecarlo.ipynb` in Jupyter Notebook
+4. Follow the step-by-step implementation in the notebook
 
 ## Git Setup
 
-This repository includes a `.gitignore` file configured for Python projects. It ignores:
-
-- Python cache files and virtual environments
-- Jupyter Notebook checkpoints
-- IDE-specific files
-- Operating system files
-- Environment files
-
-To start tracking your changes:
+Initialize git repository and start tracking changes:
 
 ```bash
+git init
 git add .
 git commit -m "Initial commit"
 ```
+
+The included `.gitignore` is configured for Python projects, excluding:
+
+- Python cache and compiled files
+- Virtual environments
+- Jupyter checkpoints
+- IDE and OS-specific files
 
 ## License
 
