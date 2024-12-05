@@ -1,16 +1,27 @@
 # Gold Price Monte Carlo Simulation Analysis
 
-This project implements a Monte Carlo simulation to forecast gold prices using historical data. The analysis uses 1000 simulations over a 252-day trading period (1 year) to generate potential future price paths and provide statistical insights into possible price movements.
+This project implements an interactive Monte Carlo simulation to forecast gold prices using historical data. The analysis includes both a Jupyter notebook implementation and a Streamlit web application that provides real-time visualization and parameter adjustment capabilities.
+
+## Features
+
+- Interactive web interface for simulation parameters
+- Real-time visualization of price paths
+- Technical indicators (RSI, Moving Averages)
+- Risk metrics (VaR, Expected Shortfall)
+- Multiple simulation models (Random Walk, Geometric Brownian Motion)
+- Downloadable simulation results
+- Statistical analysis with price distribution visualization
 
 ## Technical Overview
 
 The simulation implements the following key components:
 
 - Daily returns calculation using percentage changes
-- Normal distribution sampling based on historical return statistics
-- 1000 independent price path simulations
-- 252-day (1 trading year) forecast period
-- Statistical analysis of final price distributions
+- Customizable number of simulations and forecast period
+- Adjustable volatility and drift parameters
+- Technical analysis indicators
+- Comprehensive risk metrics
+- Interactive visualization using Plotly
 
 ## Prerequisites
 
@@ -20,6 +31,9 @@ Required Python packages:
 pandas
 numpy
 matplotlib
+plotly
+streamlit
+scipy
 ```
 
 Install dependencies using:
@@ -35,12 +49,14 @@ https://huggingface.co/datasets/mltrev23/gold-price/blob/main/FINAL_USO.csv
 
 ## Implementation Details
 
-The analysis is implemented in `gold-pricing-montecarlo.ipynb` with the following detailed steps:
+### Jupyter Notebook (`gold-pricing-montecarlo.ipynb`)
+
+Basic implementation with the following steps:
 
 1. **Data Preparation**
 
-   - Import required libraries (pandas, numpy, matplotlib)
-   - Load historical price data from FINAL_USO.csv
+   - Import required libraries
+   - Load historical price data
    - Convert dates to datetime format
    - Sort data chronologically
 
@@ -50,31 +66,48 @@ The analysis is implemented in `gold-pricing-montecarlo.ipynb` with the followin
    - Compute return statistics (mean, standard deviation)
    - Remove any NA values from the return series
 
-3. **Simulation Parameters**
-
-   - Number of simulations: 1000
-   - Forecast period: 252 trading days
-   - Starting price: Latest adjusted closing price
-   - Return distribution: Normal distribution based on historical statistics
-
-4. **Monte Carlo Simulation**
-
+3. **Monte Carlo Simulation**
    - Initialize price paths matrix
    - Generate random daily returns
    - Calculate cumulative price paths
    - Store results in numpy array
 
-5. **Visualization and Analysis**
-   - Plot all simulated price paths
-   - Calculate key statistics:
-     - Expected (mean) price
-     - Median price
-     - Price standard deviation
-     - 5th and 95th percentiles for confidence intervals
+### Streamlit App (`gold_monte_carlo_app.py`)
+
+Interactive web application with advanced features:
+
+1. **Simulation Parameters**
+
+   - Adjustable number of simulations
+   - Customizable forecast period
+   - Volatility and drift adjustments
+   - Model selection (Random Walk/Geometric Brownian Motion)
+
+2. **Technical Analysis**
+
+   - Moving Averages (customizable periods)
+   - RSI (Relative Strength Index)
+   - Price trend visualization
+
+3. **Risk Analytics**
+
+   - Value at Risk (VaR)
+   - Expected Shortfall
+   - Maximum Drawdown
+   - Price distribution statistics
+
+4. **Visualization**
+   - Real-time price path plotting
+   - Confidence intervals
+   - Technical indicators overlay
+   - Price distribution histogram
+   - Interactive Plotly charts
 
 ## Usage Instructions
 
-1. Ensure all prerequisites are installed:
+### Jupyter Notebook
+
+1. Install prerequisites:
 
    ```bash
    pip install -r requirements.txt
@@ -84,39 +117,43 @@ The analysis is implemented in `gold-pricing-montecarlo.ipynb` with the followin
 
 3. Open `gold-pricing-montecarlo.ipynb` in Jupyter Notebook
 
-4. Execute cells sequentially to:
-   - Load and prepare data
-   - Run simulations
-   - Generate visualizations
-   - View statistical analysis
+### Streamlit App
+
+1. Install prerequisites as above
+
+2. Run the Streamlit app:
+
+   ```bash
+   streamlit run gold_monte_carlo_app.py
+   ```
+
+3. Use the sidebar controls to:
+   - Adjust simulation parameters
+   - Toggle technical indicators
+   - Customize visualization options
+   - Download simulation results
 
 ## Project Structure
 
-- `gold-pricing-montecarlo.ipynb`: Main analysis notebook
+- `gold-pricing-montecarlo.ipynb`: Basic analysis notebook
+- `gold_monte_carlo_app.py`: Interactive Streamlit application
 - `FINAL_USO.csv`: Historical price dataset
 - `requirements.txt`: Python dependencies
 - `.gitignore`: Git ignore rules
 - `README.md`: Project documentation
-
-## Git Configuration
-
-The repository includes a `.gitignore` file configured for Python projects. To initialize:
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-```
 
 ## Output Analysis
 
 The simulation provides:
 
 - Visual representation of potential price paths
-- Statistical measures of price distribution:
-  - Expected future price
-  - Price range with 90% confidence interval
-  - Volatility measures through standard deviation
+- Statistical measures of price distribution
+- Technical analysis indicators
+- Risk metrics including:
+  - Value at Risk (VaR)
+  - Expected Shortfall
+  - Maximum Drawdown
+  - Price range and volatility measures
 
 ## License
 
